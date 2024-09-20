@@ -64,6 +64,14 @@ app.post('/api/appointment', [
   }
 });
 
+// Middleware to serve static files from React app
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+// All other routes will be handled by React
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
