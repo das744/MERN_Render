@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
 const { body, validationResult } = require('express-validator');
 const cors = require('cors');
 const app = express();
@@ -65,7 +66,7 @@ app.post('/api/appointment', [
 });
 
 // Middleware to serve static files from React app
-app.use(express.static(path.join(__dirname, 'client/build')));
+ app.use(express.static(path.join(__dirname, 'client/build')));
 
 // All other routes will be handled by React
 app.get('*', (req, res) => {
