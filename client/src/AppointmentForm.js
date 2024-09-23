@@ -21,7 +21,7 @@ const AppointmentForm = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch('http://localhost:5000/api/appointment', {
+      const response = await fetch('https://mern-render-server.onrender.com/api/appointment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
