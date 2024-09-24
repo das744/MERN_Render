@@ -9,6 +9,9 @@ const dotenv = require('dotenv');
 
 dotenv.config(); // Load environment variables from .env file
 
+app.use(cors({ origin: 'https://mern-render-vjgs.onrender.com' }));
+app.use(express.json());
+
 // Connect to MongoDB (update the connection string with your MongoDB URI)
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
@@ -16,8 +19,6 @@ mongoose.connect(process.env.MONGODB_URI, {
 }).then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-app.use(cors({ origin: 'https://mern-render-vjgs.onrender.com' }));
-app.use(express.json());
 
 // Define your appointment schema
 const appointmentSchema = new mongoose.Schema({
